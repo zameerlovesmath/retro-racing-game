@@ -190,7 +190,7 @@ class TREE(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.left_or_right = random.choice([-1,1])
         if self.left_or_right == -1:
-            self.rect.centerx = 300
+            self.rect.centerx = 285
         else:
             self.rect.centerx = WIDTH - 300
         self.rect.centery = ORIGIN[1]
@@ -242,10 +242,10 @@ while running:
     if random.randint(1,300)==15:
         bob = Enemy()
         all_sprites.add(bob)
-    if tree_counter == 20:
+    if tree_counter == 5:
         tree_guy = TREE()
         all_sprites.add(tree_guy)
-        tree_counter %= 20
+        tree_counter %= 5
     if keystate[pygame.K_s]:
         if music_playing:
             pygame.mixer.music.pause()
