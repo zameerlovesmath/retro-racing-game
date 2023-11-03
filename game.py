@@ -242,10 +242,10 @@ while running:
     if random.randint(1,300)==15:
         bob = Enemy()
         all_sprites.add(bob)
-    if tree_counter == 60:
+    if tree_counter == 20:
         tree_guy = TREE()
         all_sprites.add(tree_guy)
-        tree_counter %= 60
+        tree_counter %= 20
     if keystate[pygame.K_s]:
         if music_playing:
             pygame.mixer.music.pause()
