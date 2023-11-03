@@ -27,8 +27,8 @@ tree_1 = pygame.image.load('tree.png')
 tree_2 = pygame.image.load('another_tree.png')
 pygame.transform.scale(tree_1, (50, 50))
 pygame.transform.scale(tree_2, (50, 50))
-# pygame.mixer.music.load('racing_background_music.mp3')
-# pygame.mixer.music.play()
+pygame.mixer.music.load('racing_background_music.mp3')
+pygame.mixer.music.play()
 pygame.mixer.music.set_volume(0.2)
 music_playing = True
 lives = 5
