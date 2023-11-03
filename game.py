@@ -4,7 +4,8 @@ WIDTH = 800
 HEIGHT = 500
 ORIGIN = (WIDTH//2,HEIGHT//5)
 road_perc = 1
-
+colour = 0
+colours = 0
 FPS = 60
 WHITE = (255,255,255)
 BLACK = (0,0,0)
@@ -137,7 +138,48 @@ class Road(pygame.sprite.Sprite):
             self.kill()
         if self.rect.x > WIDTH:
             self.kill()
+class Blue(pygame.sprite.Sprite):
+    def __init__(self):
+        global colour
+        self.width = 0
+        self.height = 5
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.Surface((self.width,self.height))
+        #self.image = random.choice([oil,cone])
+        self.rect = self.image.get_rect()
+        self.rect.centerx = ORIGIN[0]-25
+        self.rect.centery = ORIGIN[1]
+        self.speedx = 0
+        self.speedy = 0
+        self.heading = 90
+        self.numrecs = (HEIGHT - ORIGIN[1])//self.height
+        self.upperright = (WIDTH + self.width)//2
+        self.targetright = (road_perc*WIDTH)
+        self.step = (self.targetright - self.upperright) // self.numrecs
+        self.increment = self.step * 2.0
+        #self.heading = random.choice([30,60,90,120,150])####
+        self.spacing = 0
 
+        colour += 0.2
+        if int(colour)%2 == 0:
+            self.color = (random.choice([BLUE]))
+        else:
+            self.color = (random.choice([WHITE]))
+           
+    def update(self):
+        self.width += self.increment
+        self.image = pygame.Surface((self.width+50,5+self.spacing))
+        self.image.fill(self.color)
+        #self.speedx = WIDTH//2
+        self.rect.centerx -= self.step
+        self.speedy = self.height
+        self.rect.centery += self.speedy
+        #self.rect.centerx += self.speedx
+        if self.rect.y > HEIGHT:
+                self.kill()
+        if self.rect.x > WIDTH:
+                self.kill()
+                
 class TREE(pygame.sprite.Sprite):
     def __init__(self):
         self.width = 50
@@ -191,7 +233,9 @@ def draw_score(LIVES):
 while running:
     clock.tick(FPS)
     pygame.event.get()
+    blue = Blue()
     roady = Road()
+    road_sprites.add(blue)
     road_sprites.add(roady)##################################
     keystate = pygame.key.get_pressed()
     tree_counter += 1
