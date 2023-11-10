@@ -1,5 +1,5 @@
 import pygame, random, math, sys, time
- 
+
 WIDTH = 800
 HEIGHT = 500
 ORIGIN = (WIDTH//2,HEIGHT//5)
