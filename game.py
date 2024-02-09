@@ -26,6 +26,7 @@ car = pygame.image.load('car_game_thing.png')
 car = pygame.transform.scale(car, (150, 105))
 tree_1 = pygame.image.load('tree.png')
 tree_2 = pygame.image.load('another_tree.png')
+bg = pygame.image.load("background.png")
 pygame.transform.scale(tree_1, (50, 50))
 pygame.transform.scale(tree_2, (50, 50))
 pygame.mixer.music.load('racing_background_music.mp3')
@@ -107,7 +108,7 @@ class Enemy(pygame.sprite.Sprite):
 
 class Road(pygame.sprite.Sprite):
     def __init__(self):
-        self.width = 50
+        self.width = 20 #50
         self.height = 5
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.Surface((self.width,self.height))
@@ -211,7 +212,6 @@ class TREE(pygame.sprite.Sprite):
 
 ###################################
 all_sprites = pygame.sprite.Group()
-tree_sprites = []
 james = Player()
 bob = Enemy()
 all_sprites.add(james)
@@ -239,17 +239,14 @@ while running:
     road_sprites.add(roady)##################################
     keystate = pygame.key.get_pressed()
     tree_counter += 1
-    if random.randint(1,100)==15:
+    if random.randint(1,200)==15:
         bob = Enemy()
         all_sprites.add(bob)
         all_sprites.remove(james)
         all_sprites.add(james)
     if tree_counter == 5:
         tree_guy = TREE()
-        tree_sprites.append(tree_guy)
-        tree_sprites = tree_sprites[::-1]
-        for i in tree_sprites:
-            all_sprites.add(i)
+        all_sprites.add(tree_guy)
         tree_counter %= 5
     if keystate[pygame.K_s]:
         if music_playing:
@@ -260,7 +257,8 @@ while running:
             music_playing = True
     road_sprites.update()#################################
     all_sprites.update()
-    screen.fill(GRASSC)
+    screen.blit(bg,(0,0))
+    #screen.fill(GRASSC)
     draw_score(lives)
     road_sprites.draw(screen)###############################
     all_sprites.draw(screen)
