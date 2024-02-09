@@ -190,7 +190,7 @@ class TREE(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.left_or_right = random.choice([-1,1])
         if self.left_or_right == -1:
-            self.rect.centerx = 275
+            self.rect.centerx = 265
         else:
             self.rect.centerx = WIDTH - 300
         self.rect.centery = ORIGIN[1]
