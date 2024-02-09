@@ -182,15 +182,15 @@ class Blue(pygame.sprite.Sprite):
 
 class TREE(pygame.sprite.Sprite):
     def __init__(self):
-        self.width = 50
-        self.height = 50
+        self.width = 70
+        self.height = 70
         pygame.sprite.Sprite.__init__(self)
         self.type_of_tree = random.choice([tree_1,tree_2])
         self.image = pygame.transform.scale(self.type_of_tree, (self.width, self.height))
         self.rect = self.image.get_rect()
         self.left_or_right = random.choice([-1,1])
         if self.left_or_right == -1:
-            self.rect.centerx = 285
+            self.rect.centerx = 275
         else:
             self.rect.centerx = WIDTH - 300
         self.rect.centery = ORIGIN[1]
@@ -201,8 +201,8 @@ class TREE(pygame.sprite.Sprite):
     def update(self):
         self.rect.x += self.left_or_right * 3
         self.rect.y += 3
-        self.width += 0.3
-        self.height += 0.3
+        self.width += 0.4
+        self.height += 0.4
         self.image = pygame.transform.scale(self.type_of_tree, (self.width, self.height))
         if self.rect.y > HEIGHT:
             self.kill()
