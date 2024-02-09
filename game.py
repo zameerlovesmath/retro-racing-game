@@ -213,11 +213,10 @@ class TREE(pygame.sprite.Sprite):
 all_sprites = pygame.sprite.Group()
 james = Player()
 bob = Enemy()
-all_sprites.add(bob)
 all_sprites.add(james)
+all_sprites.add(bob)
 road_sprites = pygame.sprite.Group()######################
 running = True
-
 def draw_score(LIVES):
     steering_wheel = pygame.image.load('steering_wheel_thing.png')
     steering_wheel = pygame.transform.scale(steering_wheel, (80, 80))
@@ -242,6 +241,8 @@ while running:
     if random.randint(1,200)==15:
         bob = Enemy()
         all_sprites.add(bob)
+        all_sprites.remove(james)
+        all_sprites.add(james)
     if tree_counter == 5:
         tree_guy = TREE()
         all_sprites.add(tree_guy)
