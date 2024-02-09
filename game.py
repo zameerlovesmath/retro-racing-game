@@ -255,6 +255,12 @@ while running:
         else:
             pygame.mixer.music.unpause()
             music_playing = True
+    if keystate[pygame.K_EQUALS]:
+        volume = pygame.mixer.music.get_volume() + 0.1
+        pygame.mixer.music.set_volume(volume)
+    if keystate[pygame.K_MINUS]:
+        volume = pygame.mixer.music.get_volume() - 0.1
+        pygame.mixer.music.set_volume(volume)
     road_sprites.update()#################################
     all_sprites.update()
     screen.blit(bg,(0,0))
