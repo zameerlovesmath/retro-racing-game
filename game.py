@@ -211,6 +211,7 @@ class TREE(pygame.sprite.Sprite):
 
 ###################################
 all_sprites = pygame.sprite.Group()
+tree_sprites = []
 james = Player()
 bob = Enemy()
 all_sprites.add(james)
@@ -245,7 +246,10 @@ while running:
         all_sprites.add(james)
     if tree_counter == 5:
         tree_guy = TREE()
-        all_sprites.add(tree_guy)
+        tree_sprites.append(tree_guy)
+        tree_sprites = tree_sprites[::-1]
+        for i in tree_sprites:
+            all_sprites.add(i)
         tree_counter %= 5
     if keystate[pygame.K_s]:
         if music_playing:
