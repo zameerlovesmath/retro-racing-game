@@ -238,7 +238,7 @@ while running:
     road_sprites.add(roady)##################################
     keystate = pygame.key.get_pressed()
     tree_counter += 1
-    if random.randint(1,200)==15:
+    if random.randint(1,100)==15:
         bob = Enemy()
         all_sprites.add(bob)
         all_sprites.remove(james)
