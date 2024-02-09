@@ -47,7 +47,7 @@ class Player(pygame.sprite.Sprite):
         self.speedx = 0
         self.speedy = 0
         self.ticker = 0
-     
+
     def update(self):
         speed = 10
         self.speedx = 0
@@ -165,7 +165,7 @@ class Blue(pygame.sprite.Sprite):
             self.color = (random.choice([BLUE]))
         else:
             self.color = (random.choice([WHITE]))
-           
+
     def update(self):
         self.width += self.increment
         self.image = pygame.Surface((self.width+50,5+self.spacing))
@@ -179,7 +179,7 @@ class Blue(pygame.sprite.Sprite):
                 self.kill()
         if self.rect.x > WIDTH:
                 self.kill()
-                
+
 class TREE(pygame.sprite.Sprite):
     def __init__(self):
         self.width = 50
@@ -228,7 +228,7 @@ def draw_score(LIVES):
         wheel.centery = 40
         screen.blit(steering_wheel, wheel)
         OFFSET += 60
-   
+
 
 while running:
     clock.tick(FPS)
@@ -239,7 +239,7 @@ while running:
     road_sprites.add(roady)##################################
     keystate = pygame.key.get_pressed()
     tree_counter += 1
-    if random.randint(1,300)==15:
+    if random.randint(1,200)==15:
         bob = Enemy()
         all_sprites.add(bob)
     if tree_counter == 5:
