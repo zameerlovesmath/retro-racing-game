@@ -212,6 +212,7 @@ class TREE(pygame.sprite.Sprite):
 
 ###################################
 all_sprites = pygame.sprite.Group()
+last_time_volume_changed = time.time()
 james = Player()
 bob = Enemy()
 all_sprites.add(james)
@@ -255,11 +256,21 @@ while running:
         else:
             pygame.mixer.music.unpause()
             music_playing = True
-    if keystate[pygame.K_EQUALS]:
-        volume = pygame.mixer.music.get_volume() + 0.1
+    if keystate[pygame.K_EQUALS] and time.time() - last_time_volume_changed > 0.2:
+        volume = pygame.mixer.music.get_volume() + 0.05
+        last_time_volume_changed = time.time()
+        if volume < 0:
+            volume = 0
+        if volume > 1:
+            volume = 1
         pygame.mixer.music.set_volume(volume)
-    if keystate[pygame.K_MINUS]:
-        volume = pygame.mixer.music.get_volume() - 0.1
+    if keystate[pygame.K_MINUS] and time.time() - last_time_volume_changed > 0.2:
+        volume = pygame.mixer.music.get_volume() - 0.05
+        last_time_volume_changed = time.time()
+        if volume < 0:
+            volume = 0
+        if volume > 1:
+            volume = 1
         pygame.mixer.music.set_volume(volume)
     road_sprites.update()#################################
     all_sprites.update()
