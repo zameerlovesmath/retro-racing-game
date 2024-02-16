@@ -237,6 +237,12 @@ def draw_score(LIVES):
 
 while running:
     clock.tick(FPS)
+    #make it harder part
+    duration = 200
+    if clock.tick(FPS):
+        pass
+    if duration <= 100:
+        duration = 200
     pygame.event.get()
     blue = Blue()
     roady = Road()
