@@ -59,6 +59,10 @@ class Player(pygame.sprite.Sprite):
             self.speedx = -speed
         if keystate[pygame.K_RIGHT] and self.rect.x < WIDTH - 230:
             self.speedx = speed
+        if keystate[pygame.K_a] and self.rect.x > 90:
+            self.speedx = -speed
+        if keystate[pygame.K_d] and self.rect.x < WIDTH - 230:
+            self.speedx = speed
         if keystate[pygame.K_q]:
             pygame.display.quit()
             pygame.quit()
