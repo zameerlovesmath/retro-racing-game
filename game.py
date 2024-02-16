@@ -117,7 +117,7 @@ class Road(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.Surface((self.width,self.height))
         #self.image = random.choice([oil,cone])
-        self.image.fill(random.choice([GREY]))
+        self.image.fill(GREY)
         self.rect = self.image.get_rect()
         self.rect.centerx = ORIGIN[0]
         self.rect.centery = ORIGIN[1]
@@ -133,7 +133,7 @@ class Road(pygame.sprite.Sprite):
     def update(self):
         self.width += self.increment
         self.image = pygame.Surface((self.width,30))
-        self.image.fill(random.choice([GREY]))
+        self.image.fill(GREY)
         #self.speedx = WIDTH//2
         self.rect.centerx -= self.step
         self.speedy = self.height
@@ -167,9 +167,9 @@ class Blue(pygame.sprite.Sprite):
 
         colour += 0.2
         if int(colour)%2 == 0:
-            self.color = (random.choice([BLUE]))
+            self.color = (BLUE)
         else:
-            self.color = (random.choice([WHITE]))
+            self.color = (WHITE)
 
     def update(self):
         self.width += self.increment
@@ -284,3 +284,4 @@ while running:
     road_sprites.draw(screen)###############################
     all_sprites.draw(screen)
     pygame.display.flip()
+    
