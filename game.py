@@ -1,5 +1,6 @@
 import pygame, random, math, sys, time
 #Konstantine was here on line 2
+#alec
 WIDTH = 800
 HEIGHT = 500
 ORIGIN = (WIDTH//2,HEIGHT//5)
