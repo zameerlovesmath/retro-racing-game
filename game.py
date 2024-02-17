@@ -55,25 +55,21 @@ class Player(pygame.sprite.Sprite):
         self.speedx = 0
         self.speedy = 0
         keystate = pygame.key.get_pressed()
-        if (keystate[pygame.K_LEFT] and self.rect.x) > 90:
-            self.speedx = speed
-        if keystate[pygame.K_a] and self.rect.x> 90:
-            # if self.rect.x > (1 - road_perc) * WIDTH:
-            self.speedx = speed
-        if keystate[pygame.K_RIGHT] and self.rect.x:
+        if keystate[pygame.K_LEFT] and self.rect.x or keystate[pygame.K_a] and self.rect.x > 90:
             self.speedx = -speed
-        if keystate[pygame.K_d] and self.rect.x < WIDTH - 230:
+            #if self.rect.x > (1 - road_perc) * WIDTH:
+        if keystate[pygame.K_d] and self.rect.x or keystate[pygame.K_RIGHT] and self.rect.x < WIDTH - 230:
             self.speedx = speed
         if keystate[pygame.K_q]:
             pygame.display.quit()
             pygame.quit()
             sys.exit()
-        # if keystate[pygame.K_UP]:
-        #     self.speedy = -speed
-        #     self.ticker += 1 #NEW CODE
-        # if keystate[pygame.K_DOWN]:
-        #     self.speedy = speed
-        #     self.ticker += 1 #NEW CODE
+        #if keystate[pygame.K_UP]:
+            #self.speedy = -speed
+            #self.ticker += 1 #NEW CODE
+        #if keystate[pygame.K_DOWN]:
+            #self.speedy = speed
+            #self.ticker += 1 #NEW CODE
         self.rect.x += self.speedx
         #HERE WE ARE GOING TO WRAP AROUND THE EDGES IF THE SPRITE
         #GOES OFF THE SCREEN
