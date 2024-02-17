@@ -55,12 +55,12 @@ class Player(pygame.sprite.Sprite):
         self.speedx = 0
         self.speedy = 0
         keystate = pygame.key.get_pressed()
-        if keystate[pygame.K_LEFT] and self.rect.x > 90:
-            # if self.rect.x > (1 - road_perc) * WIDTH:
-            self.speedx = -speed
-        if keystate[pygame.K_RIGHT] and self.rect.x < WIDTH - 230:
+        if (keystate[pygame.K_LEFT] and self.rect.x) > 90:
             self.speedx = speed
-        if keystate[pygame.K_a] and self.rect.x > 90:
+        if keystate[pygame.K_a] and self.rect.x> 90:
+            # if self.rect.x > (1 - road_perc) * WIDTH:
+            self.speedx = speed
+        if keystate[pygame.K_RIGHT] and self.rect.x:
             self.speedx = -speed
         if keystate[pygame.K_d] and self.rect.x < WIDTH - 230:
             self.speedx = speed
@@ -165,7 +165,6 @@ class Blue(pygame.sprite.Sprite):
         self.increment = self.step * 2.0
         #self.heading = random.choice([30,60,90,120,150])####
         self.spacing = 0
-
         colour += 0.2
         if int(colour)%2 == 0:
             self.color = (BLUE)
@@ -239,11 +238,10 @@ def draw_score(LIVES):
 while running:
     clock.tick(FPS)
     #make it harder part
-    # duration = 200
-    # if clock.tick(FPS):
-    #     pass
-    # if duration <= 100:
-    #     duration = 200
+    #make_it_harder = 200
+    #while running:
+       #time.sleep(30)
+       #make_it_harder -= 5
     pygame.event.get()
     blue = Blue()
     roady = Road()
@@ -251,7 +249,7 @@ while running:
     road_sprites.add(roady)##################################
     keystate = pygame.key.get_pressed()
     tree_counter += 1
-    if random.randint(1,200)==15:
+    if random.randint(1, 200)==15:
         bob = Enemy()
         all_sprites.add(bob)
         all_sprites.remove(james)
