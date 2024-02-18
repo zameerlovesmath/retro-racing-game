@@ -230,14 +230,8 @@ def draw_score(LIVES):
         screen.blit(steering_wheel, wheel)
         OFFSET += 60
 
-
 while running:
     clock.tick(FPS)
-    #make it harder part
-    #make_it_harder = 200
-    #while running:
-       #time.sleep(30)
-       #make_it_harder -= 5
     pygame.event.get()
     blue = Blue()
     roady = Road()
@@ -245,6 +239,11 @@ while running:
     road_sprites.add(roady)##################################
     keystate = pygame.key.get_pressed()
     tree_counter += 1
+    #make it harder part
+    #make_it_harder = 200
+    #if running:
+       #time.sleep(30)
+       #make_it_harder -= 5
     if random.randint(1, 200)==15:
         bob = Enemy()
         all_sprites.add(bob)
