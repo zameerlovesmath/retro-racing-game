@@ -252,7 +252,9 @@ while running:
     #make it harder part
     if FPS_count >= 1800:
         make_it_harder -= 5
-    if random.randint(1, make_it_harder) == 15:
+    if make_it_harder <= 1:
+        make_it_harder = 30
+    if random.randint(1, make_it_harder) == 1:
         bob = Enemy()
         all_sprites.add(bob)
         all_sprites.remove(james)
