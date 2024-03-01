@@ -30,7 +30,7 @@ screen = pygame.display.set_mode((WIDTH,HEIGHT))
 clock = pygame.time.Clock()
 oil = pygame.image.load('oil_spill.png')
 cone = pygame.image.load('traffic_cone_art.png')
-car = pygame.image.load('StepHBig2.png')
+car = pygame.image.load('car_game_thing.png')
 car = pygame.transform.scale(car, (150, 105))
 tree_1 = pygame.image.load('tree.png')
 tree_2 = pygame.image.load('another_tree.png')
@@ -62,7 +62,7 @@ class Player(pygame.sprite.Sprite):
         self.speedx = 0
         self.speedy = 0
         keystate = pygame.key.get_pressed()
-        if keystate[pygame.K_LEFT] and self.rect.x or keystate[pygame.K_a] and self.rect.x > 90:
+        if (keystate[pygame.K_LEFT] or keystate[pygame.K_a]) and (self.rect.x > 95):
             self.speedx = -speed
             #if self.rect.x > (1 - road_perc) * WIDTH:
         if keystate[pygame.K_d] and self.rect.x or keystate[pygame.K_RIGHT] and self.rect.x < WIDTH - 230:
@@ -249,7 +249,7 @@ while running:
     road_sprites.add(roady)
     keystate = pygame.key.get_pressed()
     tree_counter += 1
-    if pygame.sprite.collide_rect(james, bob) and time.time() - 0.25 > last_collision:
+    if pygame.sprite.collide_rect(james, bob) and time.time() - 1 > last_collision:
         last_collision = time.time()
         lives -= 1
         # print("hi")
