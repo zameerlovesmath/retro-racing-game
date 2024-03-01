@@ -35,6 +35,7 @@ car = pygame.transform.scale(car, (150, 105))
 tree_1 = pygame.image.load('tree.png')
 tree_2 = pygame.image.load('another_tree.png')
 bg = pygame.image.load("background.png")
+game_over_screen = pygame.image.load("game_over_screen.png")
 pygame.transform.scale(tree_1, (50, 50))
 pygame.transform.scale(tree_2, (50, 50))
 pygame.mixer.music.load('racing_background_music.mp3')
@@ -43,6 +44,7 @@ pygame.mixer.music.set_volume(0.2)
 music_playing = True
 lives = 5
 tree_counter = 0
+died = False
 
 class Player(pygame.sprite.Sprite):
 
@@ -188,6 +190,23 @@ class Blue(pygame.sprite.Sprite):
         if self.rect.x > WIDTH:
                 self.kill()
 
+class GAMEOVER(pygame.sprite.Sprite):
+    def __init__(self):
+        self.width = 800
+        self.height = 800
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.transform.scale(game_over_screen, (self.width, self.height))
+        self.rect = self.image.get_rect()
+        self.rect.centerx = ORIGIN[0]
+        self.rect.centery = ORIGIN[1]
+        self.speedx = 0
+        self.speedy = 0
+        self.heading = 90
+
+    def update(self):
+        pass
+
+
 class TREE(pygame.sprite.Sprite):
     def __init__(self):
         self.width = 70
@@ -218,12 +237,15 @@ class TREE(pygame.sprite.Sprite):
             self.kill()
 
 
+
 all_sprites = pygame.sprite.Group()
 last_time_volume_changed = time.time()
 james = Player()
 bob = Enemy()
+game_over_ajkslagiskla = GAMEOVER()
 all_sprites.add(james)
 all_sprites.add(bob)
+# all_sprites.add(game_over_ajkslagiskla)
 road_sprites = pygame.sprite.Group()
 running = True
 def draw_score(LIVES):
@@ -255,8 +277,7 @@ while running:
         # print("hi")
 
     if lives <= 0:
-        running = False
-        print("You died")
+        died = True
 
     #make it harder part
     FPS_count += 1
@@ -304,3 +325,6 @@ while running:
     road_sprites.draw(screen)
     all_sprites.draw(screen)
     pygame.display.flip()
+    if died:
+        all_sprites.remove(game_over_ajkslagiskla)
+        all_sprites.add(game_over_ajkslagiskla)
