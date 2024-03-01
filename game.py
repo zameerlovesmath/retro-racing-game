@@ -23,6 +23,7 @@ DARKGREEN = (0,59,0)
 BLUE = (0,0,255)
 YELLOW = (255,255,0)
 GREY = (173,171,163)
+last_collision = time.time()
 pygame.init()
 pygame.mixer.init()
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
@@ -249,6 +250,9 @@ while running:
     road_sprites.add(roady)
     keystate = pygame.key.get_pressed()
     tree_counter += 1
+    if pygame.sprite.collide_rect(james, bob) and time.time() - 0.2 > last_collision:
+        last_collision = time.time()
+        print("hi")
     #make it harder part
     if FPS_count >= 1800:
         make_it_harder -= 5
