@@ -1,7 +1,10 @@
 import pygame, random, math, sys, time
 #Konstantine was here on line 2
 #alec
-# test
+#test
+#Dimitri
+#James is the player
+#Bob is the enemy
 FPS_count = 0
 make_it_harder = 200
 WIDTH = 800
