@@ -249,7 +249,7 @@ while running:
     road_sprites.add(roady)
     keystate = pygame.key.get_pressed()
     tree_counter += 1
-    if pygame.sprite.collide_rect(james, bob) and time.time() - 0.2 > last_collision:
+    if pygame.sprite.collide_rect(james, bob) and time.time() - 0.25 > last_collision:
         last_collision = time.time()
         lives -= 1
         # print("hi")
