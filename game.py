@@ -30,7 +30,7 @@ screen = pygame.display.set_mode((WIDTH,HEIGHT))
 clock = pygame.time.Clock()
 oil = pygame.image.load('oil_spill.png')
 cone = pygame.image.load('traffic_cone_art.png')
-car = pygame.image.load('car_game_thing.png')
+car = pygame.image.load('StepHBig2.png')
 car = pygame.transform.scale(car, (150, 105))
 tree_1 = pygame.image.load('tree.png')
 tree_2 = pygame.image.load('another_tree.png')
@@ -256,7 +256,9 @@ while running:
     #make it harder part
     if FPS_count >= 1800:
         make_it_harder -= 5
-    if random.randint(1, make_it_harder) == 15:
+    if make_it_harder <= 1:
+        make_it_harder = 30
+    if random.randint(1, make_it_harder) == 1:
         bob = Enemy()
         all_sprites.add(bob)
         all_sprites.remove(james)
