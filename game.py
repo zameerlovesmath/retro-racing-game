@@ -8,7 +8,7 @@ Bob is the enemy'''
 FPS_count = 0
 make_it_harder = 200
 WIDTH = 800
-HEIGHT = 1000
+HEIGHT = 500
 ORIGIN = (WIDTH//2,HEIGHT//5)
 road_perc = 1
 colour = 0
