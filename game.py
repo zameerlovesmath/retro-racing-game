@@ -1,7 +1,8 @@
 import pygame, random, math, sys, time
 #Konstantine was here on line 2
 #alec
-duration_count = 0
+# test
+FPS_count = 0
 make_it_harder = 200
 WIDTH = 800
 HEIGHT = 1000
@@ -233,7 +234,7 @@ def draw_score(LIVES):
         OFFSET += 60
 
 while running:
-    duration_count += 1
+    FPS_count += 1
     clock.tick(FPS)
     pygame.event.get()
     blue = Blue()
@@ -243,7 +244,7 @@ while running:
     keystate = pygame.key.get_pressed()
     tree_counter += 1
     #make it harder part
-    if duration_count >= 1800:
+    if FPS_count >= 1800:
         make_it_harder -= 5
     if random.randint(1, make_it_harder) == 15:
         bob = Enemy()
