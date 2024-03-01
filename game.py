@@ -240,7 +240,6 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-    FPS_count += 1
     clock.tick(FPS)
     pygame.event.get()
     blue = Blue()
@@ -250,11 +249,12 @@ while running:
     keystate = pygame.key.get_pressed()
     tree_counter += 1
     #make it harder part
-    if FPS_count >= 1800:
+    FPS_count += 1
+    if FPS_count >= 3600:
         make_it_harder -= 5
-    if make_it_harder <= 1:
+    if make_it_harder <= 15:
         make_it_harder = 30
-    if random.randint(1, make_it_harder) == 1:
+    if random.randint(1, make_it_harder) == 15:
         bob = Enemy()
         all_sprites.add(bob)
         all_sprites.remove(james)
