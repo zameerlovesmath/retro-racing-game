@@ -62,7 +62,7 @@ class Player(pygame.sprite.Sprite):
         self.speedx = 0
         self.speedy = 0
         keystate = pygame.key.get_pressed()
-        if keystate[pygame.K_LEFT] and self.rect.x or keystate[pygame.K_a] and self.rect.x > 90:
+        if (keystate[pygame.K_LEFT] or keystate[pygame.K_a]) and (self.rect.x > 95):
             self.speedx = -speed
             #if self.rect.x > (1 - road_perc) * WIDTH:
         if keystate[pygame.K_d] and self.rect.x or keystate[pygame.K_RIGHT] and self.rect.x < WIDTH - 230:
