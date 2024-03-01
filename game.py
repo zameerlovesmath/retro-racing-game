@@ -252,7 +252,13 @@ while running:
     tree_counter += 1
     if pygame.sprite.collide_rect(james, bob) and time.time() - 0.2 > last_collision:
         last_collision = time.time()
-        print("hi")
+        lives -= 1
+        # print("hi")
+
+    if lives <= 0:
+        running = False
+        print("You died")
+
     #make it harder part
     if FPS_count >= 1800:
         make_it_harder -= 5
