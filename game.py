@@ -8,7 +8,7 @@ Bob is the enemy'''
 FPS_count = 0
 make_it_harder = 200
 WIDTH = 800
-HEIGHT = 500
+HEIGHT = 1000
 ORIGIN = (WIDTH//2,HEIGHT//5)
 road_perc = 1
 colour = 0
@@ -23,6 +23,7 @@ DARKGREEN = (0,59,0)
 BLUE = (0,0,255)
 YELLOW = (255,255,0)
 GREY = (173,171,163)
+last_collision = time.time()
 pygame.init()
 pygame.mixer.init()
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
@@ -248,6 +249,9 @@ while running:
     road_sprites.add(roady)
     keystate = pygame.key.get_pressed()
     tree_counter += 1
+    if pygame.sprite.collide_rect(james, bob) and time.time() - 0.2 > last_collision:
+        last_collision = time.time()
+        print("hi")
     #make it harder part
     FPS_count += 1
     if FPS_count >= 3600:
