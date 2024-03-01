@@ -1,10 +1,10 @@
 import pygame, random, math, sys, time
-#Konstantine was here on line 2
-#alec
-#test
-#Dimitri
-#James is the player
-#Bob is the enemy
+'''Konstantine was here on line 2
+alec
+test
+Dimitri
+James is the player
+Bob is the enemy'''
 FPS_count = 0
 make_it_harder = 200
 WIDTH = 800
@@ -23,13 +23,14 @@ DARKGREEN = (0,59,0)
 BLUE = (0,0,255)
 YELLOW = (255,255,0)
 GREY = (173,171,163)
+last_collision = time.time()
 pygame.init()
 pygame.mixer.init()
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
 clock = pygame.time.Clock()
 oil = pygame.image.load('oil_spill.png')
 cone = pygame.image.load('traffic_cone_art.png')
-car = pygame.image.load('car_game_thing.png')
+car = pygame.image.load('StepHBig2.png')
 car = pygame.transform.scale(car, (150, 105))
 tree_1 = pygame.image.load('tree.png')
 tree_2 = pygame.image.load('another_tree.png')
@@ -89,7 +90,7 @@ class Player(pygame.sprite.Sprite):
         #     self.rect.y = 0
         # if self.rect.y < 0:
         #     self.rect.y = HEIGHT
-##################################
+
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
@@ -216,14 +217,14 @@ class TREE(pygame.sprite.Sprite):
         if self.rect.x > WIDTH:
             self.kill()
 
-###################################
+
 all_sprites = pygame.sprite.Group()
 last_time_volume_changed = time.time()
 james = Player()
 bob = Enemy()
 all_sprites.add(james)
 all_sprites.add(bob)
-road_sprites = pygame.sprite.Group()######################
+road_sprites = pygame.sprite.Group()
 running = True
 def draw_score(LIVES):
     steering_wheel = pygame.image.load('steering_wheel_thing.png')
@@ -246,13 +247,18 @@ while running:
     blue = Blue()
     roady = Road()
     road_sprites.add(blue)
-    road_sprites.add(roady)##################################
+    road_sprites.add(roady)
     keystate = pygame.key.get_pressed()
     tree_counter += 1
+    if pygame.sprite.collide_rect(james, bob) and time.time() - 0.2 > last_collision:
+        last_collision = time.time()
+        print("hi")
     #make it harder part
     if FPS_count >= 1800:
         make_it_harder -= 5
-    if random.randint(1, make_it_harder) == 15:
+    if make_it_harder <= 1:
+        make_it_harder = 30
+    if random.randint(1, make_it_harder) == 1:
         bob = Enemy()
         all_sprites.add(bob)
         all_sprites.remove(james)
@@ -284,11 +290,11 @@ while running:
         if volume > 1:
             volume = 1
         pygame.mixer.music.set_volume(volume)
-    road_sprites.update()#################################
+    road_sprites.update()
     all_sprites.update()
     screen.blit(bg,(0,0))
     #screen.fill(GRASSC)
     draw_score(lives)
-    road_sprites.draw(screen)###############################
+    road_sprites.draw(screen)
     all_sprites.draw(screen)
     pygame.display.flip()
