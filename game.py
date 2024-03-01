@@ -1,6 +1,7 @@
 import pygame, random, math, sys, time
 #Konstantine was here on line 2
 #alec
+# test
 FPS_count = 0
 make_it_harder = 200
 WIDTH = 800
@@ -233,6 +234,9 @@ def draw_score(LIVES):
         OFFSET += 60
 
 while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
     FPS_count += 1
     clock.tick(FPS)
     pygame.event.get()
