@@ -233,6 +233,9 @@ def draw_score(LIVES):
         OFFSET += 60
 
 while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
     FPS_count += 1
     clock.tick(FPS)
     pygame.event.get()
