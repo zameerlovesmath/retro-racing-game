@@ -294,10 +294,10 @@ while running:
         all_sprites.add(bob)
         all_sprites.remove(james)
         all_sprites.add(james)
-    if tree_counter == 5:
+    if tree_counter == 10:
         tree_guy = TREE()
         all_sprites.add(tree_guy)
-        tree_counter %= 5
+        tree_counter %= 10
     if keystate[pygame.K_s]:
         if music_playing:
             pygame.mixer.music.pause()
