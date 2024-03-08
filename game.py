@@ -237,7 +237,6 @@ class TREE(pygame.sprite.Sprite):
             self.kill()
 
 
-
 all_sprites = pygame.sprite.Group()
 last_time_volume_changed = time.time()
 james = Player()
@@ -282,6 +281,7 @@ while running:
     #make it harder part
     FPS_count += 1
     if FPS_count >= 3600:
+        FPS_count = 0
         make_it_harder -= 5
     if make_it_harder <= 15:
         make_it_harder = 30
