@@ -26,8 +26,11 @@ BLUE = (0,0,255)
 YELLOW = (255,255,0)
 GREY = (173,171,163)
 last_collision = time.time()
+PAUSED = False
+Pause_delay = 0
 pygame.init()
 pygame.mixer.init()
+pause_screen = pygame.image.load('pause-screen.png')
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
 clock = pygame.time.Clock()
 oil = pygame.image.load('oil_spill.png')
@@ -261,6 +264,7 @@ def draw_score(LIVES):
         OFFSET += 60
 
 while running:
+    Pause_delay += 1
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -271,8 +275,17 @@ while running:
     road_sprites.add(blue)
     road_sprites.add(roady)
     keystate = pygame.key.get_pressed()
+<<<<<<< Updated upstream
     if not died:
         tree_counter += 1
+=======
+    tree_counter += 1
+    if keystate[pygame.K_p] and Pause_delay > 30:
+        screen.blit(pause_screen, (0, 0))
+        PAUSED = not PAUSED
+        Pause_delay = 0
+        
+>>>>>>> Stashed changes
     if pygame.sprite.collide_rect(james, bob) and time.time() - 1 > last_collision:
         last_collision = time.time()
         lives -= 1
@@ -320,13 +333,14 @@ while running:
         if volume > 1:
             volume = 1
         pygame.mixer.music.set_volume(volume)
-    road_sprites.update()
-    all_sprites.update()
-    screen.blit(bg,(0,0))
-    #screen.fill(GRASSC)
-    draw_score(lives)
-    road_sprites.draw(screen)
-    all_sprites.draw(screen)
+    if not PAUSED:
+        road_sprites.update()
+        all_sprites.update()
+        screen.blit(bg,(0,0))
+        #screen.fill(GRASSC)
+        draw_score(lives)
+        road_sprites.draw(screen)
+        all_sprites.draw(screen)
     pygame.display.flip()
     if died:
         all_sprites.remove(game_over_ajkslagiskla)
