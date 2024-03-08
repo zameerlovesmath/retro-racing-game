@@ -44,6 +44,7 @@ lives = 5
 tree_counter = 0
 ded = False
 start_playing_time = time.time()
+score_printed = False
 
 class Player(pygame.sprite.Sprite):
 
@@ -333,10 +334,13 @@ while running:
         all_sprites.add(game_over_ajkslagiskla)
         all_sprites.remove(tree_guy)
         end_playing = time.time()
-        print(end_playing - start_playing_time)
+        if not score_printed:
+            print(end_playing - start_playing_time)
+        score_printed = True
         if keystate[pygame.K_SPACE]:
             ded = False
             lives = 5
-            start_playing_time = time.time
+            start_playing_time = time.time()
+            score_printed = False
             pygame.mixer.music.rewind()
             all_sprites.remove(game_over_ajkslagiskla)
