@@ -1,4 +1,6 @@
 import pygame, random, math, sys, time
+
+from pygame.mixer import music
 '''Konstantine was here on line 2
 alec
 test
@@ -328,3 +330,8 @@ while running:
     if died:
         all_sprites.remove(game_over_ajkslagiskla)
         all_sprites.add(game_over_ajkslagiskla)
+        if keystate[pygame.K_SPACE]:
+            died = False
+            lives = 5
+            pygame.mixer.music.rewind()
+            all_sprites.remove(game_over_ajkslagiskla)
