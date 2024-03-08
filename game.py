@@ -42,7 +42,7 @@ pygame.mixer.music.set_volume(0.2)
 music_playing = True
 lives = 5
 tree_counter = 0
-died = False
+ded = False
 
 class Player(pygame.sprite.Sprite):
 
@@ -268,9 +268,9 @@ while running:
     road_sprites.add(blue)
     road_sprites.add(roady)
     keystate = pygame.key.get_pressed()
-    if not died:
+    if not ded:
         tree_counter += 1
-    if keystate[pygame.K_p] and Pause_delay > 30:
+    if keystate[pygame.K_p] and Pause_delay > 30 and not ded:
         screen.blit(pause_screen, (0, 0))
         PAUSED = not PAUSED
         Pause_delay = 0
@@ -280,7 +280,7 @@ while running:
         # print("hi")
 
     if lives <= 0:
-        died = True
+        ded = True
 
     #make it harder part
     FPS_count += 1
@@ -330,12 +330,12 @@ while running:
         road_sprites.draw(screen)
         all_sprites.draw(screen)
     pygame.display.flip()
-    if died:
+    if ded:
         all_sprites.remove(game_over_ajkslagiskla)
         all_sprites.add(game_over_ajkslagiskla)
         all_sprites.remove(tree_guy)
         if keystate[pygame.K_SPACE]:
-            died = False
+            ded = False
             lives = 5
             pygame.mixer.music.rewind()
             all_sprites.remove(game_over_ajkslagiskla)
