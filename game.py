@@ -271,7 +271,8 @@ while running:
     road_sprites.add(blue)
     road_sprites.add(roady)
     keystate = pygame.key.get_pressed()
-    tree_counter += 1
+    if not died:
+        tree_counter += 1
     if pygame.sprite.collide_rect(james, bob) and time.time() - 1 > last_collision:
         last_collision = time.time()
         lives -= 1
@@ -330,6 +331,7 @@ while running:
     if died:
         all_sprites.remove(game_over_ajkslagiskla)
         all_sprites.add(game_over_ajkslagiskla)
+        all_sprites.remove(tree_guy)
         if keystate[pygame.K_SPACE]:
             died = False
             lives = 5
