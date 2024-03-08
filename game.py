@@ -235,7 +235,6 @@ class TREE(pygame.sprite.Sprite):
         if self.rect.x > WIDTH:
             self.kill()
 
-
 all_sprites = pygame.sprite.Group()
 last_time_volume_changed = time.time()
 james = Player()
