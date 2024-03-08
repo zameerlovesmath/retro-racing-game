@@ -204,7 +204,6 @@ class GAMEOVER(pygame.sprite.Sprite):
     def update(self):
         pass
 
-
 class TREE(pygame.sprite.Sprite):
     def __init__(self):
         self.width = 70
@@ -278,10 +277,8 @@ while running:
         last_collision = time.time()
         lives -= 1
         # print("hi")
-
     if lives <= 0:
         died = True
-
     #make it harder part
     FPS_count += 1
     if FPS_count >= 3600:
