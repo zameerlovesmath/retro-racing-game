@@ -1,23 +1,6 @@
 import pygame, random, math, sys, time
+from constants import *
 from pygame.mixer import music
-FPS_count = 0
-make_it_harder = 200
-WIDTH = 800
-HEIGHT = 500
-ORIGIN = (WIDTH//2,HEIGHT//5)
-road_perc = 1
-colour = 0
-colours = 0
-FPS = 60
-WHITE = (255,255,255)
-BLACK = (0,0,0)
-RED = (255,0,0)
-MIDGREEN = (0,143,17)
-GRASSC = (36, 161, 14)
-DARKGREEN = (0,59,0)
-BLUE = (0,0,255)
-YELLOW = (255,255,0)
-GREY = (173,171,163)
 last_collision = time.time()
 PAUSED = False
 Pause_delay = 0
@@ -107,8 +90,8 @@ class Enemy(pygame.sprite.Sprite):
         self.heading = random.choice([60,75,90,105,120])####
     def update(self):
         speed = 10
-        self.speedx = speed*math.cos(math.radians(self.heading))
-        self.speedy = speed*math.sin(math.radians(self.heading))
+        self.speedx = int(speed*math.cos(math.radians(self.heading)))
+        self.speedy = int(speed*math.sin(math.radians(self.heading)))
         self.rect.centery += self.speedy
         self.rect.centerx += self.speedx
         if self.rect.y > HEIGHT:
