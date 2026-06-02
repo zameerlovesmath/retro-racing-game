@@ -1,3 +1,5 @@
+import pygame
+
 FPS_count = 0
 make_it_harder = 200
 WIDTH = 800
@@ -16,3 +18,13 @@ DARKGREEN = (0,59,0)
 BLUE = (0,0,255)
 YELLOW = (255,255,0)
 GREY = (173,171,163)
+
+pause_screen = pygame.image.load('pause-screen.png')
+oil = pygame.image.load('oil_spill.png')
+cone = pygame.image.load('traffic_cone_art.png')
+car = pygame.image.load('car_game_thing.png')
+pygame.mixer.music.load('racing_background_music.mp3')
+tree_1 = pygame.image.load('tree.png')
+tree_2 = pygame.image.load('another_tree.png')
+bg = pygame.image.load("background.png")
+game_over_screen = pygame.image.load("game_over_screen.png")
