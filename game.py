@@ -6,6 +6,7 @@ PAUSED = False
 Pause_delay = 0
 pygame.init()
 pygame.mixer.init()
+pygame.mixer.music.load('racing_background_music.mp3')
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
 clock = pygame.time.Clock()
 car = pygame.transform.scale(car, (150, 105))
@@ -266,7 +267,7 @@ while running:
         all_sprites.add(bob)
         all_sprites.remove(james)
         all_sprites.add(james)
-    if tree_counter == 10:
+    if tree_counter >= 10:
         tree_guy = TREE()
         all_sprites.add(tree_guy)
         tree_counter %= 10
